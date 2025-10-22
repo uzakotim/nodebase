@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
+import prisma from "@/lib/db";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const users = await prisma.user.findMany();
+
   return (
-   <div>Hello world
-    <Button>Click me</Button>
+   <div>{JSON.stringify(users)}
    </div> 
   );
 }
